@@ -17,6 +17,12 @@ class GameOfLife(Frame):
 
 		self.initialUI()
 
+		self.start_button = Button(self.parent, text = "Start Game", command = self.simulate_game)
+		self.start_button.grid(row = 1, column = 1, sticky = E)
+
+		self.reset_button = Button(self.parent, text = "Reset", state = DISABLED, command = self.reset_game)
+		self.reset_button.grid(row =1 , column = 2, sticky = W)
+
 	def initialUI(self):	
 
 		self.parent.title("Game of Life")
@@ -25,22 +31,11 @@ class GameOfLife(Frame):
 		self.title_frame = Frame(self.parent)
 		self.title_frame.grid(row = 0, column = 0, columnspan = 4)
 
-		self.titleFont = font.Font(family="Helvetica", size=14)
-		title = Label(self.title_frame, text = "Conway's Game of Life", font = self.titleFont)
-		title.pack(side = TOP)
-
-		prompt = Label(self.title_frame, text = "Click the cells to create the starting configuration, the press Start Game:")
-		prompt.pack(side = BOTTOM)
-
 		# creates grid of buttons for starting configuration
 		self.build_grid()
 
 		# creates a button to start the simulation
-		self.start_button = Button(self.parent, text = "Start Game", command = self.simulate_game)
-		self.start_button.grid(row = 1, column = 1, sticky = E)
-
-		self.reset_button = Button(self.parent, text = "Reset", state = DISABLED, command = self.reset_game)
-		self.reset_button.grid(row =1 , column = 2, sticky = W)
+		
 
 	def build_grid(self):
 
@@ -77,7 +72,7 @@ class GameOfLife(Frame):
 			self.cell_toggle(self.cell_buttons[coord[0]][coord[1]])			
 
 		if self.generate_next:
-			self.after(100, self.simulate_game)
+			self.after(10, self.simulate_game)
 		else:
 			self.enable_buttons()
 
