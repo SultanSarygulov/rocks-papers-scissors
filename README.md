@@ -1,4 +1,4 @@
-# Rock-Paper-Scissors
+# Rocks-Papers-Scissors
 
 ## Rules
 1. There are **Gray** Rocks, **Red** Scissors, and **Yellow** Papers.
