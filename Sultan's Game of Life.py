@@ -14,11 +14,12 @@ class Field:
         self.count = 0
         self.moves = 0
 
-        for j in range(-1,self.m+1):
+        for j in range(self.m):
             self.mat.append([])
-            for i in range(-1,self.n+1):
+            for i in range(self.n):
                 self.mat[j].append(choice([0,0,0,0,1,2,3]))
-
+                
+        
         self.draw()
        
     def step(self):
@@ -27,26 +28,20 @@ class Field:
                 if self.mat[i][j] == 1:
                     if self.mat[i-1][j-1] == 2 or self.mat[i][j-1] == 2 or self.mat[i+1][j-1] == 2 or self.mat[i-1][j] == 2 or self.mat[i+1][j] == 2 or self.mat[i-1][j+1] == 2 or self.mat[i][j+1] == 2 or self.mat[i+1][j+1] == 2: 
                         self.mat[i][j] = 2
-                    elif self.mat[i-1][j-1] == 0 or self.mat[i][j-1] == 0 or self.mat[i+1][j-1] == 0 or self.mat[i-1][j] == 0 or self.mat[i+1][j] == 0 or self.mat[i-1][j+1] == 0 or self.mat[i][j+1] == 0 or self.mat[i+1][j+1] == 0: 
-                        self.mat[i][j] = 0
                     else:
-                        self.mat[i][j] = 1
+                        self.mat[i][j] = 0
 
                 elif self.mat[i][j] == 2:
                     if self.mat[i-1][j-1] == 3 or self.mat[i][j-1] == 3 or self.mat[i+1][j-1] == 3 or self.mat[i-1][j] == 3 or self.mat[i+1][j] == 3 or self.mat[i-1][j+1] == 3 or self.mat[i][j+1] == 3 or self.mat[i+1][j+1] == 3: 
                         self.mat[i][j] = 3
-                    elif self.mat[i-1][j-1] == 0 or self.mat[i][j-1] == 0 or self.mat[i+1][j-1] == 0 or self.mat[i-1][j] == 0 or self.mat[i+1][j] == 0 or self.mat[i-1][j+1] == 0 or self.mat[i][j+1] == 0 or self.mat[i+1][j+1] == 0: 
-                        self.mat[i][j] = 0
                     else:
-                        self.mat[i][j] = 2
+                        self.mat[i][j] = 0
 
                 elif self.mat[i][j] == 3:
                     if self.mat[i-1][j-1] == 1 or self.mat[i][j-1] == 1 or self.mat[i+1][j-1] == 1 or self.mat[i-1][j] == 1 or self.mat[i+1][j] == 1 or self.mat[i-1][j+1] == 1 or self.mat[i][j+1] == 1 or self.mat[i+1][j+1] == 1: 
                         self.mat[i][j] = 1
-                    elif self.mat[i-1][j-1] == 0 or self.mat[i][j-1] == 0 or self.mat[i+1][j-1] == 0 or self.mat[i-1][j] == 0 or self.mat[i+1][j] == 0 or self.mat[i-1][j+1] == 0 or self.mat[i][j+1] == 0 or self.mat[i+1][j+1] == 0: 
-                        self.mat[i][j] = 0
                     else:
-                        self.mat[i][j] = 3
+                        self.mat[i][j] = 0
 
     def draw(self):
         '''
@@ -76,7 +71,7 @@ class Field:
                 #text=self.mat[i][j])
         
         self.step()
-        self.c.after(1000,self.draw)
+        self.c.after(600,self.draw)
 
 
 root = Tk()
